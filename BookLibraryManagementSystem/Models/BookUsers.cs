@@ -6,7 +6,7 @@ namespace BookLibraryManagementSystem.Models
     /// <summary>
     /// This class contains all the 9 properties which are present in the registration form
     /// </summary>
-    public class Users
+    public class BookUsers
     {
         [Key]
         public int UserId { get; set; }

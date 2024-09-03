@@ -1,41 +1,42 @@
-﻿using Dapper;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
+using BookLibraryManagementSystem.Data;
 using BookLibraryManagementSystem.Models;
-using System.Data.SqlClient;
+using Dapper;
+
 
 namespace BookLibraryManagementSystem.Data
 {
-   
-        public interface IUserRepository
-        {
-            Task<Users> GetUserByIdAsync(int id);
-            Task<IEnumerable<Users>> GetAllUsersAsync();
-            Task AddUserAsync(Users user);
-            //Task UpdateUserAsync(Users user);
-            //Task DeleteUserAsync(int id);
-        }
- }
-    /// <summary>
-    /// Repository for get sql connection 
-    /// </summary>
-    public class UserRepository
+    public interface IUserRepository
     {
-        private readonly string _connectionString;
+        Task CreateUserAsync(BookUsers user);
+        Task<BookUsers> GetUserByUsernameAsync(string username);
+    }
+}
 
-        public UserRepository(string connectionString)
+namespace BookLibraryManagementSystem.Data
+{
+    public class UserRepository : IUserRepository
+    {
+        private readonly IDbConnection _dbConnection;
+
+        public UserRepository(IDbConnection dbConnection)
         {
-            _connectionString = connectionString;
+            _dbConnection = dbConnection;
         }
 
-        public async Task CreateUserAsync(Users user)
+        public async Task CreateUserAsync(BookUsers user)
         {
-            using (var connection = new SqlConnection(_connectionString))
-            {
-                var sql = "INSERT INTO BookUsers (FirstName, LastName, Email, Password, ConfirmPassword, PhoneNumber, DateOfBirth) VALUES (@FirstName, @LastName, @Email, @Password, @ConfirmPassword, @PhoneNumber, @DateOfBirth)";
-                await connection.ExecuteAsync(sql, user);
-            }
+            var sql = @"INSERT INTO BookUsers (FirstName, LastName, Email, Password, ConfirmPassword, PhoneNumber, DateOfBirth)
+                        VALUES (@FirstName, @LastName, @Email, @Password, @ConfirmPassword, @PhoneNumber, @DateOfBirth)";
+            await _dbConnection.ExecuteAsync(sql, user);
+        }
+
+        public async Task<BookUsers> GetUserByUsernameAsync(string username)
+        {
+            var sql = "SELECT * FROM BookUsers WHERE Email = @Username";
+            return await _dbConnection.QueryFirstOrDefaultAsync<BookUsers>(sql, new { Username = username });
         }
     }
-
+}

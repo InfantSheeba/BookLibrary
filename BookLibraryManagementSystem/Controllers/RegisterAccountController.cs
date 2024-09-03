@@ -25,7 +25,7 @@ namespace BookLibraryManagementSystem.Controllers
 
         // Example action method to handle form submission
         [HttpPost]
-        public async Task<IActionResult> Register(Users user)
+        public async Task<IActionResult> Register(BookUsers user)
         {
             if (ModelState.IsValid)
             {
@@ -36,4 +36,3 @@ namespace BookLibraryManagementSystem.Controllers
         }
     }
 }
-
