@@ -3,9 +3,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BookLibraryManagementSystem.Models
 {
-    /// <summary>
-    /// This class contains all the 9 properties which are present in the registration form
-    /// </summary>
     public class BookUsers
     {
         [Key]
@@ -48,4 +45,3 @@ namespace BookLibraryManagementSystem.Models
         public DateTime? DateOfBirth { get; set; }
     }
 }
-

@@ -3,7 +3,6 @@
 @{
     ViewBag.Title = "User Registration";
 }
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,22 +18,23 @@
             display: flex; /* Use flexbox for centering content */
             align-items: center; /* Center content vertically */
             justify-content: center; /* Center content horizontally */
+            min-height: 100vh; /* Full height of the viewport */
+            margin: 0; /* Remove default margin */
         }
 
         .container {
-            width: 80%;
-            margin: 0 auto;
-            padding: 20px;
+            width: 90%; /* Adjust container width */
+            max-width: 450px; /* Set a maximum width for the container */
+            padding: 30px;
             background-color: #fff;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
             .container:hover {
                 transform: scale(1.02);
-                box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+                box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
             }
 
         h2 {
@@ -44,19 +44,20 @@
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px; /* Increased margin for better spacing */
         }
 
             .form-group label {
                 font-weight: bold;
-                margin-bottom: 5px;
+                margin-bottom: 8px;
                 display: block;
                 color: #333;
             }
 
             .form-group .form-control {
                 width: 100%;
-                padding: 10px;
+                max-width: 350px; /* Set a maximum width for input fields */
+                padding: 12px; /* Increased padding */
                 border: 1px solid #ccc;
                 border-radius: 4px;
                 box-sizing: border-box;
@@ -74,16 +75,18 @@
                 margin-top: 5px;
             }
 
-            .form-group small {
+            .form-group .form-text {
                 color: #777;
                 font-size: 12px;
+                margin-top: 8px;
+                margin-bottom: -8px; /* Slightly pull up the spacing to align better with the input field */
             }
 
             .form-group button {
                 background-color: #28a745;
                 color: #fff;
                 border: none;
-                padding: 10px 15px;
+                padding: 12px 20px; /* Increased padding for buttons */
                 border-radius: 4px;
                 cursor: pointer;
                 font-size: 16px;
@@ -105,7 +108,7 @@
     <div class="container">
         <h2>User Registration</h2>
 
-        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        @using (Html.BeginForm("Register", "RegisterAccount", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
         {
             @Html.AntiForgeryToken()
 

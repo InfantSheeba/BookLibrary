@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
 using BookLibraryManagementSystem.Models;
 using BookLibraryManagementSystem.Data;
-using System.Threading.Tasks;
 using BookLibraryManagementSystem.Helpers;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace BookLibraryManagementSystem.Controllers
 {
@@ -30,31 +30,13 @@ namespace BookLibraryManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                try
+                var user = await _userRepository.GetUserByUsernameAsync(model.Username);
+                if (user != null && _passwordHelper.VerifyPassword(user.Password, model.Password))
                 {
-                    // Debug log to check the username being used for lookup
-                    System.Diagnostics.Debug.WriteLine($"Username: {model.Username}");
-
-                    var user = await _userRepository.GetUserByUsernameAsync(model.Username);
-                    if (user != null)
-                    {
-                        // Debug log or breakpoint
-                        System.Diagnostics.Debug.WriteLine($"Found user: {model.Username}");
-
-                        if (_passwordHelper.VerifyPassword(user.Password, model.Password))
-                        {
-                            HttpContext.Session.SetString("Username", model.Username);
-                            return RedirectToAction("Index", "Home");
-                        }
-                    }
-                    ModelState.AddModelError("", "Invalid username or password.");
+                    HttpContext.Session.SetString("Username", model.Username);
+                    return RedirectToAction("Index", "Home");
                 }
-                catch (Exception ex)
-                {
-                    // Log the exception details
-                    System.Diagnostics.Debug.WriteLine($"Exception: {ex.Message}");
-                    ModelState.AddModelError("", "An error occurred while processing your request.");
-                }
+                ModelState.AddModelError("", "Invalid username or password.");
             }
             return View(model);
         }

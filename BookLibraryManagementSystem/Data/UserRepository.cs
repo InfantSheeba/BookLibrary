@@ -4,39 +4,48 @@ using System.Threading.Tasks;
 using BookLibraryManagementSystem.Data;
 using BookLibraryManagementSystem.Models;
 using Dapper;
-
+using Microsoft.Data.SqlClient;
 
 namespace BookLibraryManagementSystem.Data
 {
     public interface IUserRepository
     {
-        Task CreateUserAsync(BookUsers user);
         Task<BookUsers> GetUserByUsernameAsync(string username);
+        Task<int> RegisterUserAsync(BookUsers user);
     }
 }
+
+
 
 namespace BookLibraryManagementSystem.Data
 {
     public class UserRepository : IUserRepository
     {
-        private readonly IDbConnection _dbConnection;
+        private readonly string _connectionString;
 
-        public UserRepository(IDbConnection dbConnection)
+        public UserRepository(IConfiguration configuration)
         {
-            _dbConnection = dbConnection;
-        }
-
-        public async Task CreateUserAsync(BookUsers user)
-        {
-            var sql = @"INSERT INTO BookUsers (FirstName, LastName, Email, Password, ConfirmPassword, PhoneNumber, DateOfBirth)
-                        VALUES (@FirstName, @LastName, @Email, @Password, @ConfirmPassword, @PhoneNumber, @DateOfBirth)";
-            await _dbConnection.ExecuteAsync(sql, user);
+            _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
         public async Task<BookUsers> GetUserByUsernameAsync(string username)
         {
-            var sql = "SELECT * FROM BookUsers WHERE Email = @Username";
-            return await _dbConnection.QueryFirstOrDefaultAsync<BookUsers>(sql, new { Username = username });
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                return await connection.QueryFirstOrDefaultAsync<BookUsers>(
+                    "SELECT * FROM BookCustomers WHERE Username = @Username", new { Username = username });
+            }
+        }
+
+        public async Task<int> RegisterUserAsync(BookUsers user)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var sql = "INSERT INTO BookCustomers (FirstName, LastName, Email, Password,ConfirmPassword, PhoneNumber, DateOfBirth) " +
+                          "VALUES (@FirstName, @LastName, @Email, @Password,@ConfirmPassword, @PhoneNumber, @DateOfBirth);";
+                return await connection.ExecuteAsync(sql, user);
+            }
         }
     }
 }
+

@@ -1,38 +1,51 @@
-﻿using BookLibraryManagementSystem.Data;
+﻿using Microsoft.AspNetCore.Mvc;
 using BookLibraryManagementSystem.Models;
-using Microsoft.AspNetCore.Mvc;
-
-
-// File: BookLibraryManagementSystem/Controllers/AccountController.cs
-using Microsoft.AspNetCore.Mvc;
+using BookLibraryManagementSystem.Data;
+using BookLibraryManagementSystem.Helpers;
+using System.Threading.Tasks;
 
 namespace BookLibraryManagementSystem.Controllers
 {
-    public class AccountController : Controller
+    public class RegisterAccountController : Controller
     {
-        private readonly UserRepository _userRepository;
+        private readonly IUserRepository _userRepository;
+        private readonly PasswordHelper _passwordHelper;
 
-        public AccountController(UserRepository userRepository)
+        public RegisterAccountController(IUserRepository userRepository, PasswordHelper passwordHelper)
         {
             _userRepository = userRepository;
+            _passwordHelper = passwordHelper;
         }
 
-        // Example action method to display the registration form
+        [HttpGet]
         public IActionResult Register()
         {
             return View();
         }
 
-        // Example action method to handle form submission
         [HttpPost]
-        public async Task<IActionResult> Register(BookUsers user)
+        [ValidateAntiForgeryToken]
+       
+        public async Task<IActionResult> Register(BookUsers model)
         {
             if (ModelState.IsValid)
             {
-                await _userRepository.CreateUserAsync(user);
+                // Validate that Password and ConfirmPassword match
+                if (model.Password != model.ConfirmPassword)
+                {
+                    ModelState.AddModelError("", "Passwords do not match.");
+                    return View(model);
+                }
+
+                // Hash password and save user
+                model.Password = _passwordHelper.HashPassword(model.Password);
+
+                // Store ConfirmPassword as well if needed
+                await _userRepository.RegisterUserAsync(model);
                 return RedirectToAction("Index", "Home");
             }
-            return View(user);
+            return View(model);
         }
+
     }
 }
