@@ -4,9 +4,9 @@ namespace BookLibraryManagementSystem.Models
 {
     public class LoginViewModel
     {
-        [Required(ErrorMessage = "Username is required.")]
-        [Display(Name = "Username")]
-        public string Username { get; set; }
+        [Required(ErrorMessage = "Email is required.")]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
 
         [Required(ErrorMessage = "Password is required.")]
         [DataType(DataType.Password)]

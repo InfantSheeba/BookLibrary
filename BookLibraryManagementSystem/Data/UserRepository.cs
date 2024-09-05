@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿
+using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
 using BookLibraryManagementSystem.Data;
@@ -10,7 +11,7 @@ namespace BookLibraryManagementSystem.Data
 {
     public interface IUserRepository
     {
-        Task<BookUsers> GetUserByUsernameAsync(string username);
+        Task<BookUsers> GetUserByEmailAsync(string email);
         Task<int> RegisterUserAsync(BookUsers user);
     }
 }
@@ -28,12 +29,12 @@ namespace BookLibraryManagementSystem.Data
             _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
-        public async Task<BookUsers> GetUserByUsernameAsync(string username)
+        public async Task<BookUsers> GetUserByEmailAsync(string email)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
                 return await connection.QueryFirstOrDefaultAsync<BookUsers>(
-                    "SELECT * FROM BookCustomers WHERE Username = @Username", new { Username = username });
+                    "SELECT * FROM BookCustomers WHERE Email = @Email", new {Email = email});
             }
         }
 
@@ -48,4 +49,3 @@ namespace BookLibraryManagementSystem.Data
         }
     }
 }
-

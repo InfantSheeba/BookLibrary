@@ -1,4 +1,56 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿//using Microsoft.AspNetCore.Mvc;
+//using BookLibraryManagementSystem.Models;
+//using BookLibraryManagementSystem.Data;
+//using BookLibraryManagementSystem.Helpers;
+//using System.Threading.Tasks;
+
+//namespace BookLibraryManagementSystem.Controllers
+//{
+//    public class RegisterAccountController : Controller
+//    {
+//        private readonly IUserRepository _userRepository;
+//        private readonly PasswordHelper _passwordHelper;
+
+//        public RegisterAccountController(IUserRepository userRepository, PasswordHelper passwordHelper)
+//        {
+//            _userRepository = userRepository;
+//            _passwordHelper = passwordHelper;
+//        }
+
+//        [HttpGet]
+//        public IActionResult Register()
+//        {
+//            return View();
+//        }
+
+//        [HttpPost]
+//        [ValidateAntiForgeryToken]
+
+//        public async Task<IActionResult> Register(BookUsers model)
+//        {
+//            if (ModelState.IsValid)
+//            {
+//                // Validate that Password and ConfirmPassword match
+//                if (model.Password != model.ConfirmPassword)
+//                {
+//                    ModelState.AddModelError("", "Passwords do not match.");
+//                    return View(model);
+//                }
+
+//                // Hash password and save user
+//                model.Password = _passwordHelper.HashPassword(model.Password);
+
+//                // Store ConfirmPassword as well if needed
+//                await _userRepository.RegisterUserAsync(model);
+//                return RedirectToAction("Index", "Home");
+//            }
+//            return View(model);
+//        }
+
+//    }
+//}
+
+using Microsoft.AspNetCore.Mvc;
 using BookLibraryManagementSystem.Models;
 using BookLibraryManagementSystem.Data;
 using BookLibraryManagementSystem.Helpers;
@@ -25,7 +77,6 @@ namespace BookLibraryManagementSystem.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-       
         public async Task<IActionResult> Register(BookUsers model)
         {
             if (ModelState.IsValid)
@@ -34,6 +85,14 @@ namespace BookLibraryManagementSystem.Controllers
                 if (model.Password != model.ConfirmPassword)
                 {
                     ModelState.AddModelError("", "Passwords do not match.");
+                    return View(model);
+                }
+
+                // Check if the user already exists
+                var existingUser = await _userRepository.GetUserByEmailAsync(model.Email);
+                if (existingUser != null)
+                {
+                    ModelState.AddModelError("", "User already exists.");
                     return View(model);
                 }
 
@@ -46,6 +105,5 @@ namespace BookLibraryManagementSystem.Controllers
             }
             return View(model);
         }
-
     }
 }
