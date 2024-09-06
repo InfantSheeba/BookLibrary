@@ -1,129 +1,162 @@
-﻿/* General Styles */
-html {
-    font-size: 14px;
-}
-
-@media (min-width: 768px) {
-    html {
-        font-size: 16px;
-    }
-}
-
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
+﻿
+.{
     margin: 0;
     padding: 0;
-    background-image: url('C:\Users\sheebav\source\repos\BookLibraryManagementSystem\BookLibraryManagementSystem\wwwroot\images\background-small'); /* Default background image */
-    background-size: cover; /* Ensures the image covers the entire background */
-    background-position: center; /* Center the background image */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
+    text-decoration: none;
+    list-style: none;
+    font-family: "poppins";
 }
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align:center;
+    width:100%;
+    heigth: 100p;
+    background: #072019;
 
-/* Background Images for Specific Screen Sizes */
-@media (max-width: 768px) {
-    body {
-        background-image: url('/images/background-medium.jpg'); /* Background image for tablets */
-    }
 }
-
-@media (max-width: 480px) {
-    body {
-        background-image: url('/images/background-small.jpg'); /* Background image for mobile devices */
-    }
-}
-
-/* Container Styles */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.8); /* Optional: Adds a white background with some transparency */
-    border-radius: 8px; /* Optional: Rounds the corners of the container */
-}
-
-/* Header Styles */
-.header {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-h1 {
-    font-size: 2.5rem;
-}
-
-/* Button Styles */
-button {
-    font-size: 1rem;
-    padding: 10px 20px;
-    border: none;
-    color: #fff;
-    background-color: #007bff;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-    button:hover {
-        background-color: #0056b3;
+    .navbar h2 {
+        color: #ffffff;
+        font-size: 25px;
+        font-weight: 500;
+        padding: 0px  20px;
+        margin-right: 10px;
     }
 
-/* Form Styles */
-form {
-    margin: 0 auto;
-    max-width: 600px;
+.navmenu{
+    display: flex;
+    justify-context: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+.navmenu li{
+    display: inline-block;
+}
+.navmenu li a{
+    color: #ffffff;
+    margin-right: 70px;
+    padding: 0px 10px;
+    font-size:20px;
+    font-weigth:600;
+}
+.search-box .search{
+    padding: 12px 8px;
+    border-radius: 30px;
+    font-size: 16px;
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+.search-box .search i{
+    color: #ffffff;
+    position: relative;
+    right: 50px;
+    top: 2px;
+    background-color: #0b910b;
+    padding: 12px;
+    border-radius: 50px;
 }
-
-input[type="text"],
-input[type="password"],
-input[type="email"] {
+header{
+    background: #e7f0f3ac;
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-bottom: 15px;
+    height: 100vh;
+}
+.main-header{
+    width:75%;
+    margin:auto;
+    height:80vh;
+    display: flex;
+    align-items:center;
+    justify-content:space-around;
 }
 
-/* Focus Styles */
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+.main-header{
+    font-size: 20px;
+    color: #0b910b;
+    font-weight:500;
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .container {
-        padding: 10px;
-    }
+.main-header h5{
+    font-size: 22px;
+    color: #0b910b;
+    font-weight:550;
+}
+  
+.main-header h2 {
+        font-size: 48px;
+        width: 34px;
+        margin-top: 10px;
+        margin-bottom: 24px;
+ }
 
-    .header {
-        font-size: 18px;
-    }
-
-    form {
-        max-width: 100%;
-        padding: 0 10px;
-    }
-
-    button {
-        width: 100%;
-    }
+.main-hearder p{
+    margin-bottom: 60px;
 }
 
-@media (max-width: 480px) {
-    .header {
-        font-size: 16px;
-    }
+.main-header .btn{
+    background: #0b910b;
+    border: 1px solid #0b910b;
+    font-size: 24px;
+    color: #ffffff;
+    font-weight: 400;
+    padding: 12px 30px;
+    border-radious: 130px;
+    transition: all .Ss;
+}
 
-    h1 {
-        font-size: 2rem;
-    }
+.main-header .btn:hover{
+    color:"0b910b";
+    background: #ffffff;
 
-    button {
-        font-size: 0.9rem;
-    }
+}
+
+.main-header img{
+     width: 56px;
+     height: auto;
+}
+
+.cat-header{
+    text-align: center;
+    padding: 20px 0;
+}
+
+section{
+    width: 95%;
+    margin: auto;
+    padding-bottom: 150px;
+}
+
+.cat-header h2{
+    font-size: 38px;
+    padding-bottom: 14px;
+}
+
+.cat-books{
+    display: flex;
+    justify-context: space-around;
+    text-align: center;
+    align-items:center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.cat-books .books{
+    width: 360px;
+    height: auto;
+    padding: 20px 30px;
+    position: relative;
+}
+
+.cat-books .books .book-img{
+    background-color: #ffffff;
+    padding: 18px;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    position: relative;
+    left: 35%;
+}
+
+.cat-books .books img{
+    width: 100%;
 }

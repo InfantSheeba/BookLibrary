@@ -6,67 +6,128 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compartible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
-    <style>
-        /* General Styles */
-        html, body {
-            height: 100%; /* Ensure html and body take up full height */
-            margin: 0; /* Remove default margins */
-            padding: 0; /* Remove default padding */
-        }
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
 
-        body {
-            font-family: Arial, sans-serif;
-            background-image: url('https://cdn.pixabay.com/photo/2016/11/29/08/48/child-1868518_1280.jpg'); /* Background image URL */
-            background-size: cover; /* Cover the entire viewport */
-            background-position: center; /* Center the image */
-            background-repeat: no-repeat; /* Prevent repetition */
-            display: flex; /* Use flexbox for centering content */
-            align-items: center; /* Center content vertically */
-            justify-content: center; /* Center content horizontally */
-        }
-
-        .container {
-            width: 80%;
-            max-width: 800px; /* Optional: Max width to prevent overly wide content */
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for readability */
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        h2 {
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        .btn {
-            display: inline-block;
-            width: 200px;
-            margin: 10px;
-            padding: 10px;
-            text-align: center;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 18px;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-            .btn:hover {
-                background-color: #0056b3;
-                transform: scale(1.05);
-            }
-    </style>
+    <!-- font awesome cdn-->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 </head>
 <body>
-    <div class="container">
-        <h2>Welcome to the Book Library Management System</h2>
-        <a href="/LoginAccount/Login" class="btn">Login</a>
-        <a href="/RegisterAccount/Register" class="btn">Register</a>
-    </div>
-</body>
-</html>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <h2>Bookery</h2>
+            </div>
+
+            <div class="navmenu">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contactus">Contact Us</a></li>
+                </ul>
+
+                <div class="search-box">
+                    <input type="search" class="search" placeholder="Search here....." />
+                    <box-icon name='search-alt-2'></box-icon>
+                </div>
+            </div>
+        </nav>
+
+        <div class="main-header">
+            <div class="header">
+                <h5>Bookstore</h5>
+                <h2>for all your reading needs</h2>
+                <p>lorem, jdkkjnj akjjfkk kkakkfklakl kjhajkfnkaiu hgyarbfjka kuahfjk,ah ihdkahb judnkja
+                    nhaun jbdnla  laljl lanj du lajh kah iu  kjagyuab yugdjuajjjh.
+                </p>
+
+
+                <a href="" class="btn">Read More</a>
+            </div>
+            <img src="C:\Users\sheebav\source\repos\BookLibraryManagementSystem\BookLibraryManagementSystem\wwwroot\images\loginimage.jpg" alt="images" />
+        </div>
+
+    </header>
+
+    <!---Categories section->
+
+        <section class="categories">
+            <div class="Cat-row">
+                <div class="cat-header">
+                    <h2>Books Categories</h2>
+                    <p>lorem50jkbnfdj jklakbjkbj jdayuiukb akbkauekiabde kaeudcbfiaeh kdbkuhcue kiuehd
+                        dbuahediu  oiujcuah ohdcnuiue k ejjeijwsijbohed  kedhbci jkbdci.
+                    </p>
+                </div>
+
+           
+                <div class="cat-books">
+                    <div class="books">
+                        <div class=book-img><
+                      <img src="@Url.Content("~/images/cat1.jpg")" alt="Category 1" />
+                      </div>
+                    <h4>Textbooks</h4>
+                    <p>mkfpm naljdbn kabdafn ladn nfijhfi lsjfinf nfksnfjkl lfnlsfk lsfnjfnjfnfnfnfnnnbf
+                        bjfknjknfjdjakjkak nhfdjuaj </p>
+                </div>
+
+     
+                        <div class="books">
+                            <div class=book-img>
+                          <img src="@Url.Content("~/images/cat2.jpg")" alt="Category 2" />
+                          </div>
+                        <h4>Textbooks</h4>
+                        <p>mkfpm naljdbn kabdafn ladn nfijhfi lsjfinf nfksnfjkl lfnlsfk lsfnjfnjfnfnfnfnnnbf
+                            bjfknjknfjdjakjkak nhfdjuaj </p>
+                </div>
+
+              
+                        <div class="books">
+                            <div class=book-img>
+                            <img src="@Url.Content("~/images/cat3.jpg")" alt="Category 3" />
+                          </div>
+                        <h4>Textbooks</h4>
+                        <p>mkfpm naljdbn kabdafn ladn nfijhfi lsjfinf nfksnfjkl lfnlsfk lsfnjfnjfnfnfnfnnnbf
+                            bjfknjknfjdjakjkak nhfdjuaj </p>
+                     </div>
+
+                    <div class="cat-books">
+                        <div class="books">
+                            <div class="book-img">
+                           <img src="@Url.Content("~/images/cat4.jpg")" alt="Category 4" />
+                          </div>
+                        <h4>Textbooks</h4>
+                        <p>mkfpm naljdbn kabdafn ladn nfijhfi lsjfinf nfksnfjkl lfnlsfk lsfnjfnjfnfnfnfnnnbf
+                            bjfknjknfjdjakjkak nhfdjuaj </p>
+                   </div>
+
+                  
+                        <div class="books">
+                            <div class="book-img">
+                            <img src="@Url.Content("~/images/cat5.jpg")" alt="Category 5" />
+                          </div>
+                        <h4>Textbooks</h4>
+                        <p>mkfpm naljdbn kabdafn ladn nfijhfi lsjfinf nfksnfjkl lfnlsfk lsfnjfnjfnfnfnfnnnbf
+                            bjfknjknfjdjakjkak nhfdjuaj </p>
+                </div>
+
+                    <div class="cat-books">
+                        <div class="books">
+                            <div class=book-img><
+                           <img src="@Url.Content("~/images/cat6.jpg")" alt="Category 6" />
+                          </div>
+                        <h4>Textbooks</h4>
+                        <p>mkfpm naljdbn kabdafn ladn nfijhfi lsjfinf nfksnfjkl lfnlsfk lsfnjfnjfnfnfnfnnnbf
+                            bjfknjknfjdjakjkak nhfdjuaj </p>
+                    </div>
+                </div>
+        </section>
+
+
+
+    </body>
+    </html>
