@@ -32,10 +32,14 @@
 
                 <div class="search-box">
                     <input type="search" class="search" placeholder="Search here....." />
-                    <box-icon name='search-alt-2'></box-icon>
+                    <i class='bx bx-search-alt-2'></i>
                 </div>
             </div>
         </nav>
+
+        <div class="menubar">
+            <i class='bx bx-menu' id="menu icon"></i>
+        </div>
 
         <div class="main-header">
             <div class="header">
@@ -48,86 +52,179 @@
 
                 <a href="" class="btn">Read More</a>
             </div>
-            <img src="C:\Users\sheebav\source\repos\BookLibraryManagementSystem\BookLibraryManagementSystem\wwwroot\images\loginimage.jpg" alt="images" />
+            <img src="@Url.Content("~/images/viewremoved.png")" class="image-without-bg" alt="Image without background">
+
         </div>
 
     </header>
 
-    <!---Categories section->
+    <!---Categories section-->
 
-        <section class="categories">
-            <div class="Cat-row">
+        <section id="categories">
+            <div class="cat-row">
                 <div class="cat-header">
                     <h2>Books Categories</h2>
                     <p>lorem50jkbnfdj jklakbjkbj jdayuiukb akbkauekiabde kaeudcbfiaeh kdbkuhcue kiuehd
-                        dbuahediu  oiujcuah ohdcnuiue k ejjeijwsijbohed  kedhbci jkbdci.
-                    </p>
-                </div>
+                        dbuahediu  oiujcuah ohdcnuiue k ejjeijwsijbohed  kedhbci jkbdci.</p>
+                 </div>
 
-           
                 <div class="cat-books">
-                    <div class="books">
-                        <div class=book-img><
-                      <img src="@Url.Content("~/images/cat1.jpg")" alt="Category 1" />
-                      </div>
+                     <div class="books">
+                        <div class="book-img">
+                            <img src="@Url.Content("~/images/cat1.png")" alt="Category 1">
+                        </div>
                     <h4>Textbooks</h4>
                     <p>mkfpm naljdbn kabdafn ladn nfijhfi lsjfinf nfksnfjkl lfnlsfk lsfnjfnjfnfnfnfnnnbf
                         bjfknjknfjdjakjkak nhfdjuaj </p>
                 </div>
 
      
-                        <div class="books">
-                            <div class=book-img>
-                          <img src="@Url.Content("~/images/cat2.jpg")" alt="Category 2" />
-                          </div>
-                        <h4>Textbooks</h4>
+                <div class="books">
+                     <div class="book-img">
+                        <img src="@Url.Content("~/images/cat2.png")" alt="Category 2">
+                     </div>
+                        <h4>Science</h4>
                         <p>mkfpm naljdbn kabdafn ladn nfijhfi lsjfinf nfksnfjkl lfnlsfk lsfnjfnjfnfnfnfnnnbf
                             bjfknjknfjdjakjkak nhfdjuaj </p>
                 </div>
 
               
-                        <div class="books">
-                            <div class=book-img>
-                            <img src="@Url.Content("~/images/cat3.jpg")" alt="Category 3" />
-                          </div>
-                        <h4>Textbooks</h4>
+                <div class="books">
+                     <div class="book-img">
+                        <img src="@Url.Content("~/images/cat3.png")" alt="Category 3">
+                     </div>
+                        <h4>History</h4>
                         <p>mkfpm naljdbn kabdafn ladn nfijhfi lsjfinf nfksnfjkl lfnlsfk lsfnjfnjfnfnfnfnnnbf
                             bjfknjknfjdjakjkak nhfdjuaj </p>
-                     </div>
+                </div>
 
-                    <div class="cat-books">
-                        <div class="books">
-                            <div class="book-img">
-                           <img src="@Url.Content("~/images/cat4.jpg")" alt="Category 4" />
+                
+                 <div class="books">
+                         <div class="book-img">
+                           <img src="@Url.Content("~/images/cat4.png")" alt="Category 4">
                           </div>
-                        <h4>Textbooks</h4>
+                        <h4>Biography</h4>
                         <p>mkfpm naljdbn kabdafn ladn nfijhfi lsjfinf nfksnfjkl lfnlsfk lsfnjfnjfnfnfnfnnnbf
                             bjfknjknfjdjakjkak nhfdjuaj </p>
                    </div>
 
                   
-                        <div class="books">
-                            <div class="book-img">
-                            <img src="@Url.Content("~/images/cat5.jpg")" alt="Category 5" />
+                   <div class="books">
+                        <div class="book-img">
+                            <img src="@Url.Content("~/images/cat5.png")" alt="Category 5">
                           </div>
-                        <h4>Textbooks</h4>
+                        <h4>History</h4>
                         <p>mkfpm naljdbn kabdafn ladn nfijhfi lsjfinf nfksnfjkl lfnlsfk lsfnjfnjfnfnfnfnnnbf
                             bjfknjknfjdjakjkak nhfdjuaj </p>
-                </div>
+                   </div>
 
-                    <div class="cat-books">
-                        <div class="books">
-                            <div class=book-img><
-                           <img src="@Url.Content("~/images/cat6.jpg")" alt="Category 6" />
-                          </div>
+         
+                  <div class="books">
+                        <div class="book-img">
+                           <img src="@Url.Content("~/images/cat6.png")" alt="Category 6">
+                         </div>
                         <h4>Textbooks</h4>
                         <p>mkfpm naljdbn kabdafn ladn nfijhfi lsjfinf nfksnfjkl lfnlsfk lsfnjfnjfnfnfnfnnnbf
                             bjfknjknfjdjakjkak nhfdjuaj </p>
                     </div>
+
                 </div>
+
+            </div>
         </section>
 
+        <!--about section ---->
+        <section id="about">
+            <div class="set-row">
+           <img src="@Url.Content("~/images/girlboyaboutimage.png")" alt="about">
+
+            
+                <div class="about-content">
+                    <h2>About Our Bookstore</h2>
+                    <p>Lorem fnjjf sksmmfkmf kanohfniugooa loajhedoahueiohrf ofdhyiushfiuhf aihdbhzsgh a
+                       jsincfkki ajfhj alohydubhg laijn khgydgi akhdiuhdjd lkhdjkhdhj kksgdygd jkhgdhd
+                       bdhgvahy kjagjy kdyghu hdjiudhn laeuhdh  kbdtfoadty tdbdihdhub ududhuhd khdjdhiudh
+                    ndkhaiud bnudjui kdbnjaoao dhididh khdygd kahdiuhd kdiuhdhh.
+                </p>
+                    
+                <a href="#" class="btn2">Read More</a>
+                </div>
+            </div>
+    </section>
+
+            <!--- blog section -->
+
+            <section id="blog">
+             <h2 class="blog-header">From Our Blog</h2>
+               <div class="set-row"> 
+                 <div class="col">
+                <img src="@Url.Content("~/images/blog1.png")" alt="b1">
+                   <h4>jhdnj akjdiojfc liaudioaj klijhjun</h4>
+                      <p>Lorem fnjjf sksmmfkmf kanohfniugooa loajhedoahueiohrf ofdhyiushfiuhf aihdbhzsgh a
+                jsincfkki ajfhj alohydubhg laijn khgydgi akhdiuhdjd lkhdjkhdhj kksgdygd jkhgdhd
+                bdhgvahy kjagjy kdyghu hdjiudhn laeuhdh  kbdtfoadty tdbdihdhub ududhuhd khdjdhiudh
+                ndkhaiud bnudjui kdbnjaoao dhididh khdygd kahdiuhd kdiuhdhh.
+            </p>
+           <a href="#">Read More</a>
+
+           <div class="dates"> 
+               <span>19 January 2021</span>
+           </div>
+           </div>
+
+            <div class="col">
+                <img src="@Url.Content("~/images/blog2.png")" alt="b2">
+                <h4>jhdnj akjdiojfc liaudioaj klijhjun</h4>
+                <p>
+                    Lorem fnjjf sksmmfkmf kanohfniugooa loajhedoahueiohrf ofdhyiushfiuhf aihdbhzsgh a
+                    jsincfkki ajfhj alohydubhg laijn khgydgi akhdiuhdjd lkhdjkhdhj kksgdygd jkhgdhd
+                    bdhgvahy kjagjy kdyghu hdjiudhn laeuhdh  kbdtfoadty tdbdihdhub ududhuhd khdjdhiudh
+                    ndkhaiud bnudjui kdbnjaoao dhididh khdygd kahdiuhd kdiuhdhh.
+                </p>
+                <a href="#">Read More</a>
+
+                <div class="dates">
+                    <span>19 January 2021</span>
+                </div>
+            </div>
+
+    </section>
+
+    <!-- contact section-->
+
+    <section id="contactus">
+        <div class="contact-row">
+            <div class="col">
+            <h2>Contact Us</h2>
+           
+            <form action="">
+                <input type="text" placeholder="Name">
+                <br>
+                <input type="text" placeholder="Email">
+                <br>
+                <input type="text" placeholder="Phone Number">
+                <br>
+                <textarea cols="20" rows="5" placeholder="Message"></textarea>
+                <br>
+                <input type="submit" value="SEND">
+            </form>
+        </div>
+        <div class="col">
+                <img src="@Url.Content("~/images/contactimage.png")" alt="contact">
+        </div>
+        </div>
+    </section>
 
 
-    </body>
-    </html>
+    <!-- footer section-->
+
+    <div class="footer">
+        <div class="footer">
+            <p>@@2024 All Rights Reserved By Bookery Online Book Shopping Site.</p>
+        </div>
+    </div>
+
+    <!--customer script file-->
+    <script src="~/site.js"></script>
+</body>
+</html>
